@@ -1,0 +1,112 @@
+* {
+    background-color: aquamarine;
+    color: blueviolet;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+h1 {
+    color: blueviolet;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+:root {
+ --cell-size: 50px;
+ --mark-size: calc(var(--cell-size)* .9);
+}
+
+body{
+    margin:0;
+}
+.board {
+    margin-top:-10;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content:center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color:blueviolet;
+    border: 2px solid;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-color:aquamarine;
+    cursor: pointer;
+}
+
+.cell.x,
+.cell.circle {
+    cursor:not-allowed;
+}
+
+board.x .cell:not(x):not(.circle):hoover::before,
+board.x .cell:not(x):not(.circle):hoover::after
+.board.circle .cell:not(.x):not(.circle):hoover::before
+ {
+    background-color:rgba(137, 43, 226, 0.063);
+}
+
+.cell.x::before,
+.cell.x::after {
+    background-color:rgb(127, 255, 212)
+
+}
+
+.cell.circle::after
+.cell.circle::before {
+    background-color:aquamarine;
+}
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(x):not(.circle):hoover::before,
+.board.x .cell:not(x):not(.circle):hoover::after {
+    content:  ' ';
+    width: calc(var(--mark-size) 8 .15);
+    height: var(--mark-size);
+    background-color: aquamarine;
+}
+
+.cell.x::before,
+.board.x .cell:not(x):not(.circle):hoover::before,
+.board.x .cell:not(x):not(.circle):hoover::after{
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(x):not(.circle):hoover::before,
+.board.x .cell:not(x):not(.circle):hoover::after{
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.board.circle.cell:not(.x):not(.circle):hoover::before,
+.board.circle.cell:not(.x):not(.circle):hoover::after {
+    content:  ' ';
+    position:absolute;
+    border-radius: 50%;
+    background-color: aquamarine;
+}
+
+.cell.circle::before,
+.board.circle.cell:not(.x):not(.circle):hoover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+.cell.circle::after,
+.board.circle.cell:not(.x):not(.circle):hoover::after  {
+    width: calc(var(--mark-size)* .6);
+    height: calc(var(--mark-size)* .6);
+    background-color: blueviolet;
+}
